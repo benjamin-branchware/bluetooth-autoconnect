@@ -1,0 +1,16 @@
+[Unit]
+Description="Automatically connect to Bluetooth devices listed in ~/.config/bluetooth/autoconnect"
+Documentation="file://%h/.local/bin/bluetooth-autoconnect.sh"
+After=bluetooth.service dbus.service default.target
+Wants=bluetooth.service
+
+[Service]
+Type=oneshot
+ExecStart=%h/.local/bin/bluetooth-autoconnect.sh
+
+StandardOutput=journal
+StandardError=journal
+
+[Install]
+WantedBy=default.target
+
